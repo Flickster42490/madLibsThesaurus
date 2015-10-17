@@ -1,0 +1,129 @@
+<doctype! html>
+<html ng-app = 'madLib'>
+<head>
+  <script src="angular.min.js"></script>
+  <script src="requests.js"></script>
+  <script src="jquery-1.11.3.min.js"></script>
+</head>
+  <body>
+
+    <div id = 'title'>
+      <h1>MAD LIBS: THESAURUS EDITION</h1>
+    </div>
+    <div ng-controller = 'madCtrl'>
+        <!-- <input ng-model = "word1" type = 'text'/>  -->
+      <p ng-hide = '!show'></p>
+      <div id = 'storyContainer'>
+        <p ng-show = 'show2'><span id ='story3'>Today, the US launched the first real Space {{word2}}. It is named the {{word3}} and is piloted by two brave souls. They needed to {{word4}} for three years in a laboratory to train for this mission.</span><span id ='story4'>The {{word3}} took off using its power first-stage {{word2}} and soared off into the {{word1}} sky. For people watching from Earth, it was a {{word6}} sight to {{word7}}. The spectators {{word8}} all day celebrating the successful {{word5}}.</span></p>
+        <p ng-show ='show1'><span id ='story1'>Last week, our class went on the {{word1}}iest field trip ever to the petting zoo. This petting zoo had all kinds of {{word2}} waiting to be pet. For twenty-five cents, you could buy a handful of {{word3}} to feed them. They would {{word4}} every time they wanted a treat.</span> <span id ='story2'>The {{word5}} kept trying to bite my clothes. I think its because I smell like {{word6}}. One ran up to my teacher, who got really scared and started to {{word7}}. I laughed so hard that I began to {{word8}}. I loved the petting zoo</span></p>
+      </div>
+      <div id = 'inputContainer'>
+        <input ng-model = "word1" type="text" placeholder = 'adj'/>   
+        <input ng-model = "word2" type="text" placeholder = 'noun(plural)'/>
+        <input ng-model = "word3" type="text" placeholder = 'noun'/>
+        <input ng-model = "word4" type="text" placeholder = 'verb'/>
+        <input ng-model = "word5" type="text" placeholder = 'noun'/>
+        <input ng-model = "word6" type="text" placeholder = 'adj'/>
+        <input ng-model = "word7" type="text" placeholder = 'verb'/>     
+        <input ng-model = "word8" type="text" placeholder = 'verb'/>
+        <button ng-click = "getterCtrl()">Get Synonyms</button>
+        <button id = 'showLib' ng-click = "show1=!show">MadLib 1</button>
+        <button id = 'showLib2' ng-click = "show2=!show">MadLib 2</button>
+        <button ng-click = 'add()'>save</button>
+        <button ng-click = 'get()'>get saved</button>
+      </div>
+    </div>
+    <div id = 'retrievedStory'></div>
+    <a class = 'twitter-share-button'
+      href="https://twitter.com/intent/tweet?text=Yo, check out maxmli.com to play Mad Libs: Thesaurus Edition" data-size='default'>
+      </a>
+    <script>window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+     
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+     
+      return t;
+    }(document, "script", "twitter-wjs"));</script>
+    
+    <script type="text/javascript">
+      $(function(){
+        $('#showLib').on('click', function(){
+          var msg = new SpeechSynthesisUtterance($('#story1').html());
+          var msg2 = new SpeechSynthesisUtterance($('#story2').html());
+          window.speechSynthesis.speak(msg);
+          window.speechSynthesis.speak(msg2);
+        })
+        $('#showLib2').on('click', function(){
+          var msg3 = new SpeechSynthesisUtterance($('#story3').html());
+          var msg4 = new SpeechSynthesisUtterance($('#story4').html());
+          window.speechSynthesis.speak(msg3);
+          window.speechSynthesis.speak(msg4);
+        })
+      })
+    </script>
+ 
+
+    <style type="text/css">
+      body{
+        font-family: 'avenir';
+        background: url('background.jpg');
+        background-size: 150% 150%;
+        background-repeat: no-repeat;
+      }
+      button{
+        color: #000;
+        font-weight: bold;
+      }
+      #twitter{
+        position: absolute;
+        height: 3%;
+        width:1.5%;
+        top: 50%;
+        left: 50%;
+      }
+      #retrievedStory{
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        top: 10%;
+        left: 1%;
+      }
+      #showLib{
+        color: #FFF;
+        background-color:#2f782f;
+      }
+      #showLib2{
+        color: #FFF;
+        background-color:#2f782f;
+      }
+      #title{
+        position: absolute;
+        left: 35%;
+        top: 20%;
+      }
+      #storyContainer{
+        position: absolute;
+        width: 60%;
+        height: 30%;
+        left: 25%;
+        top: 50%;
+      }
+      #inputContainer{
+        position: absolute;
+        width: 100%;
+        height: 20%;
+        left: 0.5%;
+        top: 90%;
+      }
+    </style>
+  </body>
+</html>

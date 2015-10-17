@@ -1,0 +1,14 @@
+{
+  "name": "madLibsThesaurus",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "dependencies": {
+    "angular": "^1.4.5",
+    "body-parser": "^1.13.3",
+    "express": "^4.0.0",
+    "jquery": "^2.1.4",
+    "node-cache": "^3.0.0"
+  }
+}
